@@ -1,5 +1,9 @@
 ---
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 const pageTitle = "Home"
+import Header from '../components/Header.astro';
+import Navigation from '../components/Navigation.astro';
 ---
 
 <html lang="en">
@@ -11,9 +15,13 @@ const pageTitle = "Home"
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		        <a href="/">Home</a>
-    <a href="/about/">About</a>
-	  <a href = "/blog/">PhotoDump</a>
+		<Header/>
 		<h1>Frances's Life</h1>
+		<Footer />
+		<script>
+			document.querySelector('.hamburger')?.addEventListener('click', ()=>{
+				document.querySelector('.nav-links')?.classList.toggle('expanded');
+			});
+		</script>
 	</body>
 </html>

@@ -1,4 +1,8 @@
 ---
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
 const pageTitle = "About Me";
 const identity = {
   firstName: "Frances",
@@ -12,6 +16,10 @@ const skills = ["HTML", "C++", "VEXCode", "React", "Astro", "Writing Docs"];
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -20,18 +28,29 @@ const goal = 3;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
+		<title>{pageTitle}</title>   
+
+<style define:vars={{skillColor, fontWeight, textCase}}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+    </style>
 	</head>
 	<body>
-        <a href="/">Home</a>
-    <a href="/about/">About</a>
-      <a href = "/blog/">PhotoDump</a>
+		<Header/>
 		<h1>{pageTitle}</h1>
         <h2>and what this site even is!</h2>
 
         <p>using html and astro, i built this website and coded all the text</p>
         <p>it will continue to update with photos i take</p>
-	</body>
+            
+
 
     <p>Here are a few facts about me:</p>
 <ul>
@@ -43,11 +62,13 @@ const goal = 3;
 </ul>
 <p>My skills are:</p>
 <ul>
-  {skills.map((skill) => <li>{skill}</li>)}
+  {skills.map((skill) => <li class = "skill">{skill}</li>)}
 </ul>
 {happy && <p>I am happy to be learning Astro!</p>}
 
 {finished && <p>I finished this tutorial!</p>}
 
 {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+<Footer />
+</body>
 </html>
